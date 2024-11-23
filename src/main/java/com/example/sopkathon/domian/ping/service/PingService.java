@@ -1,9 +1,11 @@
 package com.example.sopkathon.domian.ping.service;
 
+import com.example.sopkathon.domian.ping.dto.res.PingDetailRes;
 import com.example.sopkathon.domian.ping.dto.res.PingListRes;
 import com.example.sopkathon.domian.ping.repository.Ping;
 import com.example.sopkathon.domian.ping.enums.PingStatusType;
 import com.example.sopkathon.domian.ping.repository.PingRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -58,5 +60,14 @@ public class PingService {
         ping.setPingStatus(pingStatus);
 
         pingRepository.save(ping);
+    }
+
+    public PingDetailRes getPingDetail(final Long pingId, final String uuid) {
+        final Ping pingDetail = pingRepository.findByIdAndUuid(pingId, uuid);
+
+        if (pingDetail == null) {
+            throw new BusinessException(PingErrorMessage.ID_NOT_FOUND);
+        }
+        return PingDetailRes.of(pingDetail.getPingStatus(), pingDetail.getPing(), pingDetail.getCreatedDate(), pingDetail.getPingStatus());
     }
 }

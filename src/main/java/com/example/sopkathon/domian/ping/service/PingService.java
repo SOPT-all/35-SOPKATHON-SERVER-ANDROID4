@@ -59,4 +59,11 @@ public class PingService {
 
         pingRepository.save(ping);
     }
+
+    public void deletePing(Long pingId){
+        Ping ping = pingRepository.findById(pingId)
+                .orElseThrow(() -> new BusinessException(PingErrorMessage.ID_NOT_FOUND));
+
+        pingRepository.delete(ping);
+    }
 }

@@ -52,6 +52,8 @@ public class PingController {
         return ResponseEntity.ok(successOtherPingLIst);
     }
 
-    @GetMapping("/{pingId}")
-    public ResponseEntity<>
+    @DeleteMapping("/{pingId}")
+    public void deletePing(@PathVariable long pingId) {
+        pingService.deletePing(pingId);
+    }
 }

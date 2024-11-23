@@ -23,9 +23,9 @@ public class TestController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Response<List<Test>>> getAll() {
+    public ResponseEntity<List<Test>> getAll() {
         List<Test> testList = testService.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(Response.success(testList));
+        return ResponseEntity.status(HttpStatus.OK).body(testList);
     }
 
     @GetMapping("/default")

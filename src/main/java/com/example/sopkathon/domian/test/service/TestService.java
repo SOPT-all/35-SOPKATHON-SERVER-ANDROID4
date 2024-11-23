@@ -1,8 +1,8 @@
-package com.example.sopkathon.service;
+package com.example.sopkathon.domian.test.service;
 
-import com.example.sopkathon.dto.Test;
-import com.example.sopkathon.repository.TestEntity;
-import com.example.sopkathon.repository.TestRepository;
+import com.example.sopkathon.domian.test.dto.Test;
+import com.example.sopkathon.domian.test.repository.TestEntity;
+import com.example.sopkathon.domian.test.repository.TestRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

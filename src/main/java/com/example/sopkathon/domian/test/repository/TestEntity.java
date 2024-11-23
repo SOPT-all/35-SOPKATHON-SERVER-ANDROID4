@@ -1,4 +1,4 @@
-package com.example.sopkathon.repository;
+package com.example.sopkathon.domian.test.repository;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

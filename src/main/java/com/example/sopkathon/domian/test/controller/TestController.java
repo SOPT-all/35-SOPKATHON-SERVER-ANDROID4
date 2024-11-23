@@ -1,10 +1,10 @@
-package com.example.sopkathon.controller;
+package com.example.sopkathon.domian.test.controller;
 
 import com.example.sopkathon.common.dto.Response;
 import com.example.sopkathon.common.exception.BusinessException;
 import com.example.sopkathon.common.message.BusinessErrorMessage;
-import com.example.sopkathon.dto.Test;
-import com.example.sopkathon.service.TestService;
+import com.example.sopkathon.domian.test.dto.Test;
+import com.example.sopkathon.domian.test.service.TestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

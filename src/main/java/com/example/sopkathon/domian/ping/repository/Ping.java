@@ -1,7 +1,8 @@
-package com.example.sopkathon.domian.ping.domain;
+package com.example.sopkathon.domian.ping.repository;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -31,7 +32,17 @@ public class Ping {
     private LocalDateTime createdDate;
 
     @Column(name = "uuid", nullable = false)
-    @NotBlank(message = "ping 상태가 null이면 안됩니다.")
+    @NotBlank(message = "uuid가 null이면 안됩니다.")
     private String uuid;
 
+    public Ping() {
+    }
+
+    public Ping(String situation, String ping, String pingStatus, LocalDateTime currentDateTime, long token) {
+        this.situation = situation;
+        this.ping = ping;
+        this.pingStatus = pingStatus;
+        this.createdDate = currentDateTime;
+        this.uuid = String.valueOf(token);
+    }
 }

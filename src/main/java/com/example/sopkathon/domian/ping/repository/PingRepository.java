@@ -1,4 +1,8 @@
 package com.example.sopkathon.domian.ping.repository;
 
-public class PingRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PingRepository extends JpaRepository<Ping, Long> {
 }

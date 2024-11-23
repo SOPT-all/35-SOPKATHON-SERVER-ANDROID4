@@ -1,5 +1,6 @@
-package com.example.sopkathon.domian.ping.domain;
+package com.example.sopkathon.domian.ping.repository;
 
+import com.example.sopkathon.domian.ping.enums.PingStatusType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
@@ -34,4 +35,27 @@ public class Ping {
     @NotBlank(message = "ping 상태가 null이면 안됩니다.")
     private String uuid;
 
+    public Long getId() {
+        return id;
+    }
+
+    public @NotBlank(message = "상황 null이면 안됩니다.") String getSituation() {
+        return situation;
+    }
+
+    public @NotBlank(message = "ping이 null이면 안됩니다.") String getPing() {
+        return ping;
+    }
+
+    public @NotBlank(message = "ping 상태가 null이면 안됩니다.") String getPingStatus() {
+        return pingStatus;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public @NotBlank(message = "ping 상태가 null이면 안됩니다.") String getUuid() {
+        return uuid;
+    }
 }

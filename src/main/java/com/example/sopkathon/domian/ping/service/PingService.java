@@ -27,7 +27,12 @@ public class PingService {
     }
 
     public PingListRes getPingList(final String pingStatusType, final String uuid) {
-        final List<Ping> foundPings = pingRepository.findByPingStatusAndUuid(pingStatusType, uuid);
+        List<Ping> foundPings;
+        if (pingStatusType.equals("all")) {
+            foundPings = pingRepository.findByUuid(uuid);
+        } else {
+            foundPings = pingRepository.findByPingStatusAndUuid(pingStatusType, uuid);
+        }
 
         final List<PingListRes.PingInfo> foundPingInfos = foundPings.stream().map(
                 ping -> PingListRes.PingInfo.of(ping.getId(), ping.getPing(), ping.getCreatedDate(), ping.getPingStatus())

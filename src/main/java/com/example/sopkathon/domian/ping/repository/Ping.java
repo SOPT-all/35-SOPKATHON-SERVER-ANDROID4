@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name="pings")
+@Setter
 public class Ping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +39,11 @@ public class Ping {
     public Ping() {
     }
 
-    public Ping(String situation, String ping, String pingStatus, LocalDateTime currentDateTime, long token) {
+    public Ping(String situation, String ping, String pingStatus, LocalDateTime currentDateTime, String token) {
         this.situation = situation;
         this.ping = ping;
         this.pingStatus = pingStatus;
         this.createdDate = currentDateTime;
-        this.uuid = String.valueOf(token);
+        this.uuid = token;
     }
 }

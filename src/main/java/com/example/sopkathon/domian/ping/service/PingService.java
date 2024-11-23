@@ -18,11 +18,20 @@ public class PingService {
         this.pingRepository = pingRepository;
     }
 
-    public void createPing(String situation, String ping, long token){
+    public void createPing(String situation, String ping, String token){
         if (ping.length() < 1 || ping.length() > 200){
             throw new BusinessException(PingErrorMessage.INVALID_STRING_LENGTH);
         }
         LocalDateTime currentDateTime = LocalDateTime.now();
         pingRepository.save(new Ping(situation, ping, "pending", currentDateTime, token));
+    }
+
+    public void updatePingStatus(String pingStatus, Long pingId){
+        Ping ping = pingRepository.findById(pingId)
+                .orElseThrow(() -> new BusinessException(PingErrorMessage.ID_NOT_FOUND));
+
+        ping.setPingStatus(pingStatus);
+
+        pingRepository.save(ping);
     }
 }

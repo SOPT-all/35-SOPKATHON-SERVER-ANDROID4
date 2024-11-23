@@ -1,10 +1,8 @@
 package com.example.sopkathon.domian.ping.controller;
 
 import com.example.sopkathon.domian.ping.dto.PingRequest;
-import com.example.sopkathon.domian.ping.repository.Ping;
+import com.example.sopkathon.domian.ping.dto.PingStatusRequest;
 import com.example.sopkathon.domian.ping.service.PingService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +15,12 @@ public class PingController {
     }
 
     @PostMapping("/select")
-    public void post(@RequestBody PingRequest pingRequest, @RequestHeader("Authorization") Long token) {
+    public void createPing(@RequestBody PingRequest pingRequest, @RequestHeader("Authorization") String token) {
         pingService.createPing(pingRequest.situation(), pingRequest.ping(), token);
+    }
+
+    @PatchMapping("/{pingId}")
+    public void updatePingStatus(@RequestBody PingStatusRequest pingStatus, @RequestHeader("Authorization") String token, @PathVariable long pingId) {
+        pingService.updatePingStatus(pingStatus.getPingStatus(), pingId);
     }
 }

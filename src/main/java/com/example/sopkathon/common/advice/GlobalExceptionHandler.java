@@ -22,6 +22,8 @@ public class GlobalExceptionHandler {
                 .body(new Message(e.getErrorMessage().getMessage()));
     }
 
+
+
     // 기본 예외 처리
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Message> handleException(Exception e) {

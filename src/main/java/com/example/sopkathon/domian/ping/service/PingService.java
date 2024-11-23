@@ -53,12 +53,11 @@ public class PingService {
         return PingListRes.of(foundPingInfos);
     }
 
-    public void createPing(String situation, String ping, String token){
-        if (ping.length() < 1 || ping.length() > 200){
+    public void createPing(String situation, String ping, String token) {
+        if (ping.length() < 1 || ping.length() > 200) {
             throw new BusinessException(PingErrorMessage.INVALID_STRING_LENGTH);
         }
-        // 한국 시간대(KST) 기준 현재 시간 설정
-        LocalDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+        LocalDateTime currentDateTime = LocalDateTime.now().plusHours(9);
         pingRepository.save(new Ping(situation, ping, "pending", currentDateTime, token));
     }
 

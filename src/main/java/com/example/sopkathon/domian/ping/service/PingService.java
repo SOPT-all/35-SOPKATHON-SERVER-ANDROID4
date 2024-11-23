@@ -70,4 +70,11 @@ public class PingService {
         }
         return PingDetailRes.of(pingDetail.getPingStatus(), pingDetail.getPing(), pingDetail.getCreatedDate(), pingDetail.getPingStatus());
     }
+
+    public void deletePing(Long pingId){
+        Ping ping = pingRepository.findById(pingId)
+                .orElseThrow(() -> new BusinessException(PingErrorMessage.ID_NOT_FOUND));
+
+        pingRepository.delete(ping);
+    }
 }

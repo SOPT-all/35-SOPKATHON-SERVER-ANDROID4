@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GPTPrompt {
-    private String ping;
+    private String situation;
 }

@@ -41,6 +41,8 @@ public class GPTController {
                 .map(choice -> choice.getMessage().getContent())
                 .collect(Collectors.joining(" "));
 
+//        String fake = "얘들아, 진짜 미안한데… 나 이번엔 릴스 못 찍을 것 같아. 사실 얼마 전에 병원 갔더니, 무릎에 살짝 염증 있다고 하더라고. 운동도 자제하라길래 춤추는 건 완전 무리일 것 같아. 아니, 내가 평소엔 잘했을 텐데… (아픈 척 무릎 주물럭거리기) 진짜 몸이 안 받쳐주니 어쩔 수가 없네. 아니 근데 사실 내가 춤추는 순간, 파트 분위기 다 깨질까 봐 무서운 것도 있어. 몸치 박치 레벨 S급은 국제적 재난이란 말이야. 내가 아끼는 파트원들을 위해서 이 정도는 양보해줘!";
+
         return ResponseEntity.ok(new PingResponse(content));
     }
 }

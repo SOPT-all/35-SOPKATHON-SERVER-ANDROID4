@@ -16,6 +16,10 @@ import com.example.sopkathon.domian.ping.repository.PingRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+import java.time.LocalDateTime;
 
 @Service
 public class PingService {
@@ -53,7 +57,8 @@ public class PingService {
         if (ping.length() < 1 || ping.length() > 200){
             throw new BusinessException(PingErrorMessage.INVALID_STRING_LENGTH);
         }
-        LocalDateTime currentDateTime = LocalDateTime.now();
+        // 한국 시간대(KST) 기준 현재 시간 설정
+        LocalDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
         pingRepository.save(new Ping(situation, ping, "pending", currentDateTime, token));
     }
 

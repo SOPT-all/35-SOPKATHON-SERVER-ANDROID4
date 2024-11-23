@@ -3,22 +3,11 @@ package com.example.sopkathon.domian.ping.service;
 import com.example.sopkathon.domian.ping.dto.res.PingDetailRes;
 import com.example.sopkathon.domian.ping.dto.res.PingListRes;
 import com.example.sopkathon.domian.ping.repository.Ping;
-import com.example.sopkathon.domian.ping.enums.PingStatusType;
 import com.example.sopkathon.domian.ping.repository.PingRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import com.example.sopkathon.common.exception.BusinessException;
-import com.example.sopkathon.common.message.BusinessErrorMessage;
 import com.example.sopkathon.common.message.PingErrorMessage;
-import com.example.sopkathon.domian.ping.repository.Ping;
-import com.example.sopkathon.domian.ping.repository.PingRepository;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-
 import java.time.LocalDateTime;
 
 @Service

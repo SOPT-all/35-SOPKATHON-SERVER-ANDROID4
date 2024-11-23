@@ -46,7 +46,7 @@ public class PingService {
         if (ping.length() < 1 || ping.length() > 200) {
             throw new BusinessException(PingErrorMessage.INVALID_STRING_LENGTH);
         }
-        LocalDateTime currentDateTime = LocalDateTime.now().plusHours(9);
+        LocalDateTime currentDateTime = LocalDateTime.now();
         pingRepository.save(new Ping(situation, ping, "pending", currentDateTime, token));
     }
 

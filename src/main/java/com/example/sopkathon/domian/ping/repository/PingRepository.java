@@ -16,6 +16,7 @@ public interface PingRepository extends JpaRepository<Ping, Long> {
     @Query("SELECT p FROM Ping p WHERE p.pingStatus = 'success' AND p.uuid != :uuid ORDER BY p.createdDate ASC")
     List<Ping> findSuccessOtherPingsByUuid(@Param("uuid") String uuid);
 
-//    @Query("SELECT p FROM Ping p WHERE p.pingId = :pingId AND p.uuid != :uuid")
     Ping findByIdAndUuid(@Param("pingId") Long pingId, @Param("uuid") String uuid);
+
+    List<Ping> findByUuid(@Param("uuid") String uuid);
 }

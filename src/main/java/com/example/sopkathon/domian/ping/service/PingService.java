@@ -72,7 +72,7 @@ public class PingService {
         if (pingDetail == null) {
             throw new BusinessException(PingErrorMessage.ID_NOT_FOUND);
         }
-        return PingDetailRes.of(pingDetail.getPingStatus(), pingDetail.getPing(), pingDetail.getCreatedDate(), pingDetail.getPingStatus());
+        return PingDetailRes.of(pingDetail.getSituation(), pingDetail.getPing(), pingDetail.getCreatedDate(), pingDetail.getPingStatus());
     }
 
     public void deletePing(Long pingId){

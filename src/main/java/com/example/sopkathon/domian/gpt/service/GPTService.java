@@ -23,7 +23,7 @@ public class GPTService {
     }
 
     public GPTResponse generateResponse(GPTPrompt wordsRequest) {
-        String prompt = String.join(", ", wordsRequest.getSentence()) +
+        String prompt = String.join(", ", wordsRequest.getPing()) +
                 "해당 상황에 맞는 핑계를 작성해줘. 30자 이내 문단 형태로";
 
         GPTRequest request = new GPTRequest(model, prompt, 1, 256, 1, 0, 0);

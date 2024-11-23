@@ -1,6 +1,7 @@
 package com.example.sopkathon.common.advice;
 
 import com.example.sopkathon.common.dto.Error;
+import com.example.sopkathon.common.dto.Message;
 import com.example.sopkathon.common.exception.BusinessException;
 import com.example.sopkathon.common.message.BusinessErrorMessage;
 import org.slf4j.Logger;
@@ -15,18 +16,18 @@ public class GlobalExceptionHandler {
 
     // 비즈니스 예외 처리
     @ExceptionHandler(value = {BusinessException.class})
-    public ResponseEntity<Error> handleBusinessException(BusinessException e) {
+    public ResponseEntity<Message> handleBusinessException(BusinessException e) {
         return ResponseEntity
                 .status(e.getErrorMessage().getHttpStatus())
-                .body(new Error(e.getErrorMessage().getMessage()));
+                .body(new Message(e.getErrorMessage().getMessage()));
     }
 
     // 기본 예외 처리
     @ExceptionHandler(value = {Exception.class})
-    public ResponseEntity<Error> handleException(Exception e) {
+    public ResponseEntity<Message> handleException(Exception e) {
         log.error("Unhandled exception occurred: {}", e.getMessage(), e);
         return ResponseEntity
                 .status(BusinessErrorMessage.INTERNAL_SERVER_ERROR.getHttpStatus())
-                .body(new Error(BusinessErrorMessage.INTERNAL_SERVER_ERROR.getMessage()));
+                .body(new Message(BusinessErrorMessage.INTERNAL_SERVER_ERROR.getMessage()));
     }
 }

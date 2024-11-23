@@ -4,6 +4,7 @@ import com.example.sopkathon.domian.ping.dto.req.PingRequest;
 import com.example.sopkathon.domian.ping.dto.req.PingStatusRequest;
 import com.example.sopkathon.common.exception.BusinessException;
 import com.example.sopkathon.common.message.PingErrorMessage;
+import com.example.sopkathon.domian.ping.dto.res.PingDetailRes;
 import com.example.sopkathon.domian.ping.dto.res.PingListRes;
 import com.example.sopkathon.domian.ping.service.PingService;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +51,15 @@ public class PingController {
     ) {
         final PingListRes successOtherPingLIst = pingService.getSuccessOtherPingList(uuid);
         return ResponseEntity.ok(successOtherPingLIst);
+    }
+
+    @GetMapping("/{pingId}")
+    public ResponseEntity<PingDetailRes> getPingDetail(
+            @RequestHeader("Authorization") String uuid,
+            @PathVariable Long pingId
+    ) {
+        final PingDetailRes pingDetail = pingService.getPingDetail(pingId, uuid);
+        return ResponseEntity.ok(pingDetail);
     }
 
     @DeleteMapping("/{pingId}")

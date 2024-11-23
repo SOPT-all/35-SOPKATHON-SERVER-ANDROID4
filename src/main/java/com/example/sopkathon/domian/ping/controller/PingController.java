@@ -46,4 +46,12 @@ public class PingController {
     public void updatePingStatus(@RequestBody PingStatusRequest pingStatus, @RequestHeader("Authorization") String token, @PathVariable long pingId) {
         pingService.updatePingStatus(pingStatus.getPingStatus(), pingId);
     }
+
+    @GetMapping("/today")
+    public ResponseEntity<PingListRes> getSuccessOtherPingList(
+            @RequestHeader("Authorization") String uuid
+    ) {
+        final PingListRes successOtherPingLIst = pingService.getSuccessOtherPingList(uuid);
+        return ResponseEntity.ok(successOtherPingLIst);
+    }
 }

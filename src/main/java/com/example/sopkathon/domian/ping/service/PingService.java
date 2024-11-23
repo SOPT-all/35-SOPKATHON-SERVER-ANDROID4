@@ -34,6 +34,15 @@ public class PingService {
         return PingListRes.of(foundPingInfos);
     }
 
+    public PingListRes getSuccessOtherPingList(final String uuid) {
+        final List<Ping> foundPings = pingRepository.findSuccessOtherPingsByUuid(uuid);
+
+        final List<PingListRes.PingInfo> foundPingInfos = foundPings.stream().map(
+                ping -> PingListRes.PingInfo.of(ping.getId(), ping.getPing(), ping.getCreatedDate(), ping.getPingStatus())
+        ).toList();
+        return PingListRes.of(foundPingInfos);
+    }
+
     public void createPing(String situation, String ping, String token){
         if (ping.length() < 1 || ping.length() > 200){
             throw new BusinessException(PingErrorMessage.INVALID_STRING_LENGTH);

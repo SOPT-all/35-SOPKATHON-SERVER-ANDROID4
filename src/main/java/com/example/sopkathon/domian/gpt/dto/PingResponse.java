@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class PingResponse {
-    @JsonRawValue
-    private final String ping;
+    private String ping;
+
     public PingResponse(String ping) {
         this.ping = ping;
     }

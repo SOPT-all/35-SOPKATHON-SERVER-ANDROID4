@@ -29,7 +29,7 @@ public class GPTController {
     @RequestMapping("/pings")
     public ResponseEntity<PingResponse> chat(@RequestBody GPTPrompt prompt){
 
-        String message = prompt.getSituation() + " 해당 상황에 맞는 핑계를 1자 이상 200자 미만으로 적어줘";
+        String message = prompt.getSituation() + " 해당 상황에 맞는 핑계를 1자 이상 200자 미만으로 적어줘. 줄바꿈은 하지 마.";
 
         GPTRequest request = new GPTRequest(
                 model, message, 1, 256, 1, 0, 0);
@@ -43,5 +43,4 @@ public class GPTController {
 
         return ResponseEntity.ok(new PingResponse(content));
     }
-
 }

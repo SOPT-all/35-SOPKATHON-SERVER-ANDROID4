@@ -1,10 +1,12 @@
 package com.example.sopkathon.domian.gpt.dto;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.Data;
 
 @Data
 public class PingResponse {
-    String ping;
+    @JsonRawValue
+    private final String ping;
     public PingResponse(String ping) {
         this.ping = ping;
     }

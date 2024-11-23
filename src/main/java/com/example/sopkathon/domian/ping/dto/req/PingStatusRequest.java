@@ -1,4 +1,4 @@
-package com.example.sopkathon.domian.ping.dto;
+package com.example.sopkathon.domian.ping.dto.req;
 
 public class PingStatusRequest {
     private String pingStatus;

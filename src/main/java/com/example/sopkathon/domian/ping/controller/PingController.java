@@ -1,16 +1,13 @@
 package com.example.sopkathon.domian.ping.controller;
 
-import com.example.sopkathon.domian.ping.dto.PingRequest;
-import com.example.sopkathon.domian.ping.dto.PingStatusRequest;
+import com.example.sopkathon.domian.ping.dto.req.PingRequest;
+import com.example.sopkathon.domian.ping.dto.req.PingStatusRequest;
 import com.example.sopkathon.common.exception.BusinessException;
-import com.example.sopkathon.common.message.BusinessErrorMessage;
 import com.example.sopkathon.common.message.PingErrorMessage;
 import com.example.sopkathon.domian.ping.dto.res.PingListRes;
-import com.example.sopkathon.domian.ping.enums.PingStatusType;
 import com.example.sopkathon.domian.ping.service.PingService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,4 +51,7 @@ public class PingController {
         final PingListRes successOtherPingLIst = pingService.getSuccessOtherPingList(uuid);
         return ResponseEntity.ok(successOtherPingLIst);
     }
+
+    @GetMapping("/{pingId}")
+    public ResponseEntity<>
 }

@@ -2,6 +2,7 @@ package com.example.sopkathon.domian.ping.enums;
 
 import com.example.sopkathon.common.exception.BusinessException;
 import com.example.sopkathon.common.message.BusinessErrorMessage;
+import com.example.sopkathon.common.message.PingErrorMessage;
 
 public enum PingStatusType {
     SUCCESS,
@@ -15,6 +16,6 @@ public enum PingStatusType {
                 return value;
             }
         }
-        throw new BusinessException(BusinessErrorMessage.BAD_REQUEST);
+        throw new BusinessException(PingErrorMessage.INVALID_PING_STATUS_TYPE);
     }
 }

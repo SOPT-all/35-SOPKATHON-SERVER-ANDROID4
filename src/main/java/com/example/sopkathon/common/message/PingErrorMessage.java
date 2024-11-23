@@ -8,6 +8,7 @@ public enum PingErrorMessage implements DefaultErrorMessage {
     INVALID_ID_TYPE(HttpStatus.BAD_REQUEST, "ID type이 number가 아닙니다."),
     ID_NOT_FOUND(HttpStatus.INTERNAL_SERVER_ERROR, "ID에 해당하는 핑계를 찾을 수 없습니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류입니다."),
+    INVALID_PING_STATUS_TYPE(HttpStatus.BAD_REQUEST, "유효하지 않은 pingStatus 타입입니다.")
     ;
 
     private HttpStatus httpStatus;

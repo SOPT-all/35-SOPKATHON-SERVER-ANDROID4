@@ -7,6 +7,7 @@ import com.example.sopkathon.common.message.BusinessErrorMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -31,5 +32,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(BusinessErrorMessage.INTERNAL_SERVER_ERROR.getHttpStatus())
                 .body(new Message(BusinessErrorMessage.INTERNAL_SERVER_ERROR.getMessage()));
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Message> handleMissingServletRequestParameterException(final MissingServletRequestParameterException e) {
+        final String errorMessage = "누락된 파라미터 : " + e.getParameterName();
+        return ResponseEntity
+                .status(BusinessErrorMessage.BAD_REQUEST.getHttpStatus())
+                .body(new Message(errorMessage));
     }
 }
